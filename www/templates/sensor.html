@@ -1,5 +1,116 @@
-<ion-view title="Sensor">
-  <ion-content class="has-header">
-    <h1>Sensor NAME</h1>
-  </ion-content>
-</ion-view>
+
+<ion-tabs class="tabs-striped tabs-top tabs-background-positive tabs-color-light" >
+    <ion-tab title="Chart"
+             icon-on="ion-ios7-partlysunny"
+             icon-off="ion-ios7-partlysunny-outline">
+        <header class="bar bar-header bar-positive">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            <div class="col">
+                <h1 class="title" ng-show="!editname">{{sensor.title}}</h1>
+                <input type="text" ng-show="editname" ng-model="sensor.title" class="edit-name-header">
+            </div>
+            <button class="button button-icon button-icon-small icon ion-checkmark" ng-show="editname" ng-click="save_sensor()"></button>
+            <button class="button button-icon button-icon-small icon ion-edit" ng-show="!editname" ng-click="edit_sensor()"></button>
+        </header>
+        <ion-content has-header="true">
+            <div class="row">
+                <div class="col">
+                    <div class="dark" style="text-align: center; font-size: 60px">
+                        <i class="balanced icon ion-arrow-graph-up-left"></i>
+                        25.5 &deg
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="myfirstchart" style="height: 250px;"></div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-tab>
+
+    <ion-tab title="Alarm" icon-on="icon ion-ios7-alarm" icon-off="icon ion-ios7-alarm-outline">
+        <header class="bar bar-header bar-positive">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            <div class="col">
+                <h1 class="title" ng-show="!editname">{{sensor.title}}</h1>
+                <input type="text" ng-show="editname" ng-model="sensor.title" class="edit-name-header">
+            </div>
+            <button class="button button-icon button-icon-small icon ion-checkmark" ng-show="editname" ng-click="save_sensor()"></button>
+            <button class="button button-icon button-icon-small icon ion-edit" ng-show="!editname" ng-click="edit_sensor()"></button>
+        </header>
+        <ion-content has-header="true">
+            <div class="list">
+
+                <div class="item item-divider">
+                    Settings alarm
+                </div>
+
+                <ion-toggle toggle-class="toggle-assertive"
+                            ng-model="pushAbove.checked"
+                            ng-change="pushAboveChange()">
+                    Temperature above
+                </ion-toggle>
+
+                <div class="item" ng-show="pushAbove.checked">
+                    <label class="item item-input">
+                        <input type="number" placeholder="150">
+                        <div style="padding-right: 10px">°C</div>
+                    </label>
+                </div>
+
+                <ion-toggle ng-model="pushBelow.checked"
+                            ng-change="pushBelowChange()">
+                    Temperature below
+                </ion-toggle>
+
+                <div class="item" ng-show="pushBelow.checked">
+                    <label class="item item-input">
+                        <input type="number" placeholder="10">
+                        <div style="padding-right: 10px">°C</div>
+                    </label>
+                </div>
+
+                <div class="item item-divider">
+                    Sound
+                </div>
+
+                <div class="item">
+                    <div class="range">
+                        <i class="icon ion-volume-low"></i>
+                        <input type="range" name="volume">
+                        <i class="icon ion-volume-high"></i>
+                    </div>
+                </div>
+
+            </div>
+        </ion-content>
+    </ion-tab>
+
+</ion-tabs>
+
+<script>
+    new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'myfirstchart',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+            { time: '12:12', value: 22.0 },
+            { time: '12:13', value: 22.5 },
+            { time: '12:12', value: 24.9 },
+            { time: '12:13', value: 23.5 },
+            { time: '12:14', value: 24.2 },
+            { time: '12:15', value: 24.8 },
+            { time: '12:16', value: 25.5 }
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'time',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['value'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Temperature'],
+        parseTime: false
+    });
+</script>

@@ -42,14 +42,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/app",
       abstract: true,
       templateUrl: "templates/menu.html",
-      controller: 'AppCtrl'
+      controller: 'SensorsCtrl'
     })
 
-    .state('app.search', {
-      url: "/search",
+    .state('app.settings', {
+      url: "/settings",
       views: {
         'menuContent' :{
-          templateUrl: "templates/search.html"
+          templateUrl: "templates/settings.html"
         }
       }
     })
@@ -82,6 +82,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/sensors');
+  $urlRouterProvider.otherwise('/app/sensors/1');
 });
 

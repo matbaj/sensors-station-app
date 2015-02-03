@@ -7,3 +7,30 @@ html
 	-ms-content-zooming: none;
 	-ms-touch-action:none;
 }
+
+.bar  .button.button-icon.button-icon-small .icon:before,
+.bar  .button.button-icon.button-icon-small:before {
+    font-size: 22px !important;
+}
+
+.edit-name-header {
+    background: transparent;
+    text-align: center;
+    color: #fff !important;
+    font-size: 17px !important;
+    height: 20px !important;
+    padding-top: 0px !important;
+    border-bottom: 1px white dotted !important;
+    min-width: 50px;
+}
+@media screen and (orientation: portrait) {
+ @-ms-viewport {
+    width: 320px;
+    user-zoom: fixed;
+    max-zoom: 1;
+    min-zoom: 1;
+ }
+}
+        .bar-footer {
+            padding-left: 0px;
+        }

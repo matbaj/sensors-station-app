@@ -3624,7 +3624,6 @@ a.subdued {
   flex: 1;
   display: block;
   overflow: hidden;
-  max-width: 150px;
   height: 100%;
   color: inherit;
   text-align: center;
